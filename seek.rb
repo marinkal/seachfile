@@ -1,15 +1,27 @@
 # encoding: cp866
 
-def seek filename, path 
-        puts path
+def seek filename, path
+        
 
-    arr = Dir.entries path
+   arr = Dir.entries path
+    #puts "full massiv #{arr.inspect}" 
+    #arr = arr.slice(start,arr.length-start)
+
+    if arr
+    
     files = arr.select{|value| File.file?("#{path}/#{value}")}
-    dirs = arr.select{|value| File.directory?("#{path}/#{value}")}
-     
+    dirs = arr.select{|value| !File.file?("#{path}/#{value}") && value[0]!="."}
+      
+        #puts arr.inspect
+	#gets
+ 	#puts files.inspect
+	#gets
+#	puts dirs.inspect 
+#	gets
+      
 	files.each do |value|
-	#puts "#{path}#{value}"
-     
+	#puts "#{path}/#{value}"
+              #gets
 	  	#puts "#{value}==#{filename}"
 	  	if value == filename
 		 puts "Файл обнаружен в папке #{path}"
@@ -23,7 +35,8 @@ def seek filename, path
 	 
 	dirs.each do |value|
 		
-		seek(filename,"#{path}/#{value}")  if (File.readable?"#{path}/#{value}") && !("#{path}/#{value}".include? 'Recycle.Bin')
+		seek(filename,"#{path}/#{value}")  if File.writable?"#{path}/#{value}" 
+	end
 	end
 	return
  end
@@ -38,3 +51,4 @@ end
 seek(filename,'C:/')
 
 
+                   
