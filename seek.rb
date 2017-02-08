@@ -1,9 +1,12 @@
-# encoding: cp866
+# encoding: cp1251
 
 def seek filename, path
         
-
+   begin
    arr = Dir.entries path
+   rescue
+   arr =[]
+   end
     #puts "full massiv #{arr.inspect}" 
     #arr = arr.slice(start,arr.length-start)
 
@@ -24,8 +27,8 @@ def seek filename, path
               #gets
 	  	#puts "#{value}==#{filename}"
 	  	if value == filename
-		 puts "Файл обнаружен в папке #{path}"
-		 exit
+		 puts "╘рщы юсэрЁєцхэ т яряъх: #{path}"
+		 #exit
 	        end
 		#else
 	 	#seek(filename,"#{path}/#{value}")  if File.directory? ("#{path}/#{value}")
@@ -44,7 +47,7 @@ def seek filename, path
   filename=''
 #filename='marina.txt'
 while filename=='' do
-	print 'Какой файл будем искать (пример 1.txt): '
+	print '╩ръющ Їрщы сєфхь шёърЄ№ (эряЁшьхЁ 1.txt): '
 	filename = gets.strip.chomp
 end
 
